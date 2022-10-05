@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "832277197283",
+    "project_id": "kalmanalgorithm",
+    "storage_bucket": "kalmanalgorithm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832277197283:android:c051d994ee173bcb19b0d6",
+        "android_client_info": {
+          "package_name": "com.example.kalmanalgorithm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "832277197283-h7oaq8vpf8e7ir223g9o3vl77bh09ps1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbeoe4i6biVNBmfynCrY1kNe2eytOkIuA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "832277197283-h7oaq8vpf8e7ir223g9o3vl77bh09ps1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
