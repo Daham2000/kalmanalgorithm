@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kalmanalgorithm/constants/util_constant.dart';
-import 'package:kalmanalgorithm/screens/select_route_page/SelectRoutePage.dart';
 
-import 'home_bloc.dart';
-import 'home_event.dart';
-import 'home_state.dart';
+import '../../constants/util_constant.dart';
+import '../home_bloc.dart';
+import '../home_event.dart';
+import '../home_state.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class SelectRoutePage extends StatefulWidget {
+  const SelectRoutePage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _MyHomePageState();
+  _SelectRoutePageState createState() => _SelectRoutePageState();
 }
 
-class _MyHomePageState extends State<HomePage> {
+class _SelectRoutePageState extends State<SelectRoutePage> {
   late HomeBloc homeBloc;
 
   @override
@@ -30,10 +29,15 @@ class _MyHomePageState extends State<HomePage> {
             pre.error != current.error ||
             pre.routeDropValue != current.routeDropValue,
         builder: (ctx, state) {
+          if(state.routeDropValue!=null){
+            print("Select route page: " + state.routeDropValue!);
+          }
           return Scaffold(
             appBar: AppBar(
               leading: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pop(context);
+                },
                 child: const Icon(
                   Icons.arrow_back_ios,
                   color: Colors.black,
@@ -41,7 +45,7 @@ class _MyHomePageState extends State<HomePage> {
               ),
               backgroundColor: Colors.white,
               title: const Text(
-                UtilConstant.selectRoute,
+                UtilConstant.selectRouteText,
                 style: TextStyle(color: Colors.black),
               ),
               centerTitle: true,
@@ -114,7 +118,7 @@ class _MyHomePageState extends State<HomePage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const SelectRoutePage(),
+                              builder: (content) => SelectRoutePage(),
                             ));
                       }
                     },
