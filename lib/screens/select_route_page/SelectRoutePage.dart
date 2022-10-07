@@ -7,7 +7,7 @@ import '../home_event.dart';
 import '../home_state.dart';
 
 class SelectRoutePage extends StatefulWidget {
-  const SelectRoutePage({Key? key}) : super(key: key);
+  const SelectRoutePage({Key? key, required String mainRoute}) : super(key: key);
 
   @override
   _SelectRoutePageState createState() => _SelectRoutePageState();
@@ -27,11 +27,10 @@ class _SelectRoutePageState extends State<SelectRoutePage> {
     return BlocBuilder<HomeBloc, HomeState>(
         buildWhen: (pre, current) =>
             pre.error != current.error ||
+            pre.startPoint != current.startPoint ||
+            pre.endPoint != current.endPoint ||
             pre.routeDropValue != current.routeDropValue,
         builder: (ctx, state) {
-          if(state.routeDropValue!=null){
-            print("Select route page: " + state.routeDropValue!);
-          }
           return Scaffold(
             appBar: AppBar(
               leading: InkWell(
@@ -70,7 +69,7 @@ class _SelectRoutePageState extends State<SelectRoutePage> {
                           height: 18.0,
                         ),
                         const Text(
-                          "Select the desired route for you",
+                          "To",
                           style: TextStyle(
                             fontSize: 20.0,
                             color: Colors.white,
@@ -81,25 +80,61 @@ class _SelectRoutePageState extends State<SelectRoutePage> {
                         ),
                         DropdownButton<String>(
                           hint: const Text(
-                            "Select your route here",
+                            "Select place where you wanna go.",
                             style: TextStyle(
                               color: Colors.white,
                             ),
                           ),
                           style: const TextStyle(color: Colors.white),
-                          value: state.routeDropValue,
+                          value: state.endPoint,
                           dropdownColor: Colors.black,
                           iconEnabledColor: Colors.white,
                           iconDisabledColor: Colors.white,
                           focusColor: Colors.white,
-                          items: UtilConstant.routeList.map((String value) {
+                          items: UtilConstant.places.map((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
                               child: Text(value),
                             );
                           }).toList(),
                           onChanged: (v) {
-                            homeBloc.add(ChangeRoute(v ?? ""));
+                            homeBloc.add(ChangeEndPoint((v ?? "")));
+                          },
+                        ),
+                        const SizedBox(
+                          height: 18.0,
+                        ),
+                        const Text(
+                          "From",
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 16.0,
+                        ),
+                        DropdownButton<String>(
+                          hint: const Text(
+                            "Select your start point.",
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                          style: const TextStyle(color: Colors.white),
+                          value: state.startPoint,
+                          dropdownColor: Colors.black,
+                          iconEnabledColor: Colors.white,
+                          iconDisabledColor: Colors.white,
+                          focusColor: Colors.white,
+                          items: UtilConstant.places.map((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                          onChanged: (v) {
+                            homeBloc.add(ChangeStartPoint(v ?? ""));
                           },
                         )
                       ],
@@ -114,12 +149,8 @@ class _SelectRoutePageState extends State<SelectRoutePage> {
                       onPrimary: Colors.yellow, // foreground
                     ),
                     onPressed: () {
-                      if (state.routeDropValue != null) {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (content) => SelectRoutePage(),
-                            ));
+                      if (state.startPoint != null) {
+
                       }
                     },
                     child: const Text('Next'),

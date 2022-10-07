@@ -14,6 +14,16 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         final data = event as ChangeRoute;
         yield state.clone(routeDropValue: data.value);
         break;
+
+      case ChangeStartPoint:
+        final data = event as ChangeStartPoint;
+        yield state.clone(startPoint: data.value);
+        break;
+
+      case ChangeEndPoint:
+        final data = event as ChangeEndPoint;
+        yield state.clone(endPoint: data.value);
+        break;
     }
   }
 }

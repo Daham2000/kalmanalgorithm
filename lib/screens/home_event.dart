@@ -5,3 +5,15 @@ class ChangeRoute extends HomeEvent {
 
   ChangeRoute(this.value);
 }
+
+class ChangeStartPoint extends HomeEvent {
+  final String value;
+
+  ChangeStartPoint(this.value);
+}
+
+class ChangeEndPoint extends HomeEvent {
+  final String value;
+
+  ChangeEndPoint(this.value);
+}

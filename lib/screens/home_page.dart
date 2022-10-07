@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kalmanalgorithm/constants/util_constant.dart';
 import 'package:kalmanalgorithm/screens/select_route_page/SelectRoutePage.dart';
+import 'package:kalmanalgorithm/screens/select_route_page/select_route_provider.dart';
 
 import 'home_bloc.dart';
 import 'home_event.dart';
@@ -114,7 +115,9 @@ class _MyHomePageState extends State<HomePage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const SelectRoutePage(),
+                              builder: (context) => SelectRouteProvider(
+                                mainRoute: state.routeDropValue ?? "",
+                              ),
                             ));
                       }
                     },

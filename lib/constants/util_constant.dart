@@ -8,4 +8,9 @@ class UtilConstant {
     "Colombo to Kurunagala 005",
     "Colombo to Matara 002",
   ];
+  static const List<String> places = [
+    "Maharagama",
+    "Nugegoda",
+    "Panadura"
+  ];
 }
