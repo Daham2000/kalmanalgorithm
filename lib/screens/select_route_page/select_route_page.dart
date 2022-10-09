@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kalmanalgorithm/screens/bus_details_page/bus_details_provider.dart';
 
 import '../../constants/util_constant.dart';
 import '../home_bloc.dart';
@@ -7,7 +8,8 @@ import '../home_event.dart';
 import '../home_state.dart';
 
 class SelectRoutePage extends StatefulWidget {
-  const SelectRoutePage({Key? key, required String mainRoute}) : super(key: key);
+  const SelectRoutePage({Key? key, required String mainRoute})
+      : super(key: key);
 
   @override
   _SelectRoutePageState createState() => _SelectRoutePageState();
@@ -150,7 +152,11 @@ class _SelectRoutePageState extends State<SelectRoutePage> {
                     ),
                     onPressed: () {
                       if (state.startPoint != null) {
-
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BusDetailsProvider(),
+                            ));
                       }
                     },
                     child: const Text('Next'),

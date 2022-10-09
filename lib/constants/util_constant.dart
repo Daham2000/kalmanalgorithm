@@ -3,6 +3,7 @@ class UtilConstant {
   static const double vPadding = 10.0;
   static const String selectRoute = "Select route";
   static const String selectRouteText = "Select Starting and ending stops";
+  static const String busDetailsText = "Bus Details";
   static final List<String> routeList = [
     "Colombo to Kandy 001",
     "Colombo to Kurunagala 005",
